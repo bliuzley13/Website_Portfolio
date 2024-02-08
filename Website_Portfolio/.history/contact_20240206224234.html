@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Let's Get in Touch!</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            background-color: #f0f0f0; /* Background color */
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 50px;
+        }
+
+        .card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 45%;
+        }
+
+        .form-card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 45%;
+        }
+
+        input[type="text"], input[type="email"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="card">
+            <h2>Contact Information</h2>
+            <p>Email: example@example.com</p>
+            <p>Phone: +1234567890</p>
+        </div>
+
+        <div class="card">
+            <h2>Find Me on GitHub</h2>
+            <a href="https://github.com/yourusername">GitHub Profile</a>
+        </div>
+        
+        <div class="form-card">
+            <h2>Contact Form</h2>
+            <form action="https://drive.google.com" method="post">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="contact">Email or Phone Number</label>
+                <input type="text" id="contact" name="contact" required>
+
+                <label for="reason">Reason for Contact</label>
+                <input type="text" id="reason" name="reason" required>
+
+                <label for="message">Your Message</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+
+    <div id="header">
+        <div class="menu-dropdown">
+            <span id="menu-btn" onmouseover="showMenu()">Menu</span>
+            <div class="dropdown-content" id="dropdown-content" onmouseleave="hideMenu()">
+                <a href="#">
+                    <img src="icons/home-7-48.ico" alt="Home Icon">
+                    Home
+                </a>
+                <a href="#">
+                    <img src="icons/contacts-48.ico" alt="About Icon">
+                    About
+                </a>
+                <a href="#">
+                    <img src="icons/folder-7-48.ico" alt="Projects Icon">
+                    Projects
+                </a>
+                <a href="contact.html">
+                    <img src="icons/phone-68-48.ico" alt="Contact Icon">
+                    Contact
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="content">
+        <div id="console"></div>
+        <!-- Add additional content here -->
+    </div>
+
+    <script>
+        function showMenu() {
+            document.getElementById("dropdown-content").style.display = "grid";
+        }
+
+        function hideMenu() {
+            document.getElementById("dropdown-content").style.display = "none";
+        }
+    </script>
+
+
+</body>
+</html>

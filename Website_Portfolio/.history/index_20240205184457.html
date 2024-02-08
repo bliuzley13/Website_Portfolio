@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        #video-container {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        #content {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #ecf0f1; /* Light text color */
+        }
+
+        #header {
+            background-color: transparent;
+            padding: 20px;
+            color: #ecf0f1; /* Light text color */
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-end; /* Align elements to the right */
+            position: fixed;
+            width: 100%;
+            z-index: 1;
+        }
+
+        #menu-btn {
+            margin-top: 5px;
+            margin-right: 50px;
+            padding: 5px;
+            background-color: transparent; /* Darker blue for the menu button */
+            color: #ecf0f1;
+            cursor: pointer;
+        }
+
+        #menu {
+            display: none;
+            position: fixed;
+            top: 70px;
+            right: 0px;
+            background-color: transparent; /* Darker blue for the subboxes */
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .menu-item {
+            margin-bottom: 10px;
+            color: #ecf0f1;
+            cursor: pointer;
+        }
+
+        #welcome-animation {
+            font-size: 24px;
+            color: #ecf0f1;
+            white-space: nowrap; /* Prevent line breaks */
+            overflow: hidden; /* Hide overflow text */
+            width: 0;
+            opacity: 0;
+            transition: width 1s, opacity 1s;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var welcomeText = document.getElementById('welcome-animation');
+            var messages = ["Hello...", "Welcome"];
+            var index = 0;
+
+            function typeWriter() {
+                welcomeText.textContent = messages[index];
+                welcomeText.style.width = 'auto';
+                welcomeText.style.opacity = 1;
+
+                // Wait for a moment
+                setTimeout(function () {
+                    // Reset animation properties
+                    welcomeText.style.width = 0;
+                    welcomeText.style.opacity = 0;
+
+                    // Move to the next message
+                    index = (index + 1) % messages.length;
+
+                    // Repeat the animation
+                    setTimeout(typeWriter, 500);
+                }, 2000); // Adjust the timing for each message
+            }
+
+            typeWriter();
+        });
+    </script>
+</head>
+<body>
+
+    <div id="video-container">
+        <video autoplay loop muted>
+            <source src="fores.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <div id="header">
+        <div id="menu-btn">Menu</div>
+        <div id="menu">
+            <div class="menu-item">Home</div>
+            <div class="menu-item">About</div>
+            <div class="menu-item">Projects</div>
+            <div class="menu-item">Contact</div>
+        </div>
+    </div>
+
+    <div id="content">
+        <div id="welcome-animation"></div>
+        <!-- Add additional content here -->
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        #video-container {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        #content {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #ecf0f1; /* Light text color */
+        }
+
+        #header {
+            background-color: transparent;
+            padding: 20px;
+            color: #ecf0f1; /* Light text color */
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-end; /* Align elements to the right */
+            position: fixed;
+            width: 100%;
+            z-index: 1;
+        }
+
+        #menu-btn {
+            margin-top: 5px;
+            margin-right: 50px;
+            padding: 5px;
+            background-color: transparent; /* Darker blue for the menu button */
+            color: #ecf0f1;
+            cursor: pointer;
+        }
+
+        #menu {
+            display: none;
+            position: fixed;
+            top: 70px;
+            right: 0px;
+            background-color: transparent; /* Darker blue for the subboxes */
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .menu-item {
+            margin-bottom: 10px;
+            color: #ecf0f1;
+            cursor: pointer;
+        }
+
+        #console {
+            font-size: 24px;
+            color: #fff; /* Initial color */
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 2px solid; /* Cursor effect */
+            animation: typeWriter 8s steps(30) infinite;
+        }
+
+        @keyframes typeWriter {
+            0%, 90% { border-color: #fff; }
+            90%, 100% { border-color: transparent; }
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var words = ['Welcome!', 'Please make yourself at home'];
+            consoleText(words, 'console');
+        });
+
+        function consoleText(words, id) {
+            var con = document.getElementById('console');
+            var wordIndex = 0;
+            var letterIndex = 0;
+            var word = words[wordIndex];
+            var target = document.getElementById(id);
+
+            function type() {
+                target.innerHTML = word.substring(0, letterIndex);
+                letterIndex++;
+                if (letterIndex <= word.length) {
+                    setTimeout(type, 120);
+                } else {
+                    setTimeout(nextWord, 500);
+                }
+            }
+
+            function nextWord() {
+                letterIndex = 0;
+                wordIndex++;
+                if (wordIndex < words.length) {
+                    word = words[wordIndex];
+                    setTimeout(type, 500);
+                }
+            }
+
+            setTimeout(type, 500);
+        }
+    </script>
+</head>
+<body>
+
+    <div id="video-container">
+        <video autoplay loop muted>
+            <source src="fores.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <div id="header">
+        <div id="menu-btn">Menu</div>
+        <div id="menu">
+            <div class="menu-item">Home</div>
+            <div class="menu-item">About</div>
+            <div class="menu-item">Projects</div>
+            <div class="menu-item">Contact</div>
+        </div>
+    </div>
+
+    <div id="content">
+        <div id="console"></div>
+        <!-- Add additional content here -->
+    </div>
+
+</body>
+</html>

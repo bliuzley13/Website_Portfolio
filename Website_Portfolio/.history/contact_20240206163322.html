@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Me</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        #video-container {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        #content {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #ecf0f1; /* Light text color */
+        }
+
+        #header {
+            background-color: transparent;
+            padding: 20px;
+            color: #ecf0f1; /* Light text color */
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-end; /* Align elements to the right */
+            position: fixed;
+            width: 100%;
+            z-index: 1;
+        }
+
+        #menu-btn {
+            margin-top: 5px;
+            margin-right: 50px;
+            padding: 5px;
+            background-color: transparent; /* Darker blue for the menu button */
+            color: #ecf0f1;
+            cursor: pointer;
+        }
+
+        #menu {
+            display: none;
+            position: fixed;
+            top: 70px;
+            right: 0px;
+            background-color: transparent; /* Darker blue for the subboxes */
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .menu-item {
+            margin-bottom: 10px;
+            color: #ecf0f1;
+            cursor: pointer;
+        }
+
+        .card-container {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px auto;
+            width: 80%;
+            max-width: 1000px;
+        }
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            color: #ecf0f1;
+            width: 45%;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .form-input {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ecf0f1;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #ecf0f1;
+        }
+
+        .form-submit {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #3498db;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-submit:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="video-container">
+        <video autoplay loop muted>
+            <source src="fores.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <div id="header">
+        <div id="menu-btn">Menu</div>
+        <div id="menu">
+            <div class="menu-item">Home</div>
+            <div class="menu-item">About</div>
+            <div class="menu-item">Projects</div>
+            <div class="menu-item">Contact</div>
+        </div>
+    </div>
+
+    <div id="content" class="card-container">
+        <!-- Contact Information Card -->
+        <div class="card contact-info">
+            <h2>Contact Information</h2>
+            <div>
+                <p>Email: example@example.com</p>
+                <p>Phone: +1234567890</p>
+                <p>Address: 123 Street, City, Country</p>
+            </div>
+        </div>
+        
+        <!-- Contact Form Card -->
+        <div class="card contact-form">
+            <h2>Contact Me</h2>
+            <form action="YOUR_GOOGLE_FORM_LINK_HERE" method="POST">
+                <input type="text" class="form-input" name="name" placeholder="Your Name" required>
+                <input type="email" class="form-input" name="email" placeholder="Your Email" required>
+                <textarea class="form-input" name="message" placeholder="Reason for Contact" rows="5" required></textarea>
+                <input type="submit" class="form-submit" value="Submit">
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
