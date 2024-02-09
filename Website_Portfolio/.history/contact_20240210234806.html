@@ -136,13 +136,13 @@
             display: none;
             position: absolute;
             background-color: rgba(0, 0, 0, 0.25); /* Semi-transparent white background */
-            min-width: 150px;
+            min-width: 200px;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.25);
             z-index: 1000; /* Adjusted z-index */
             top: 30px; /* Adjust vertical position */
             right: 0; /* Align to the right */
             border-radius: 10px; /* Rounded corners */
-            padding: 7px; /* Padding for spacing */
+            padding: 10px; /* Padding for spacing */
             display: grid; /* Set to grid layout */
             grid-template-columns: repeat(2, 1fr); /* Two columns */
             grid-gap: 10px; /* Gap between grid items */
@@ -154,20 +154,19 @@
             display: flex;
             flex-direction: column; /* Arrange content vertically */
             align-items: center; /* Center content horizontally */
-            padding: 10px 5px;
+            padding: 10px;
             border: none; /* Remove border */
             border-radius: 5px; /* Rounded corners for cards */
             background-color: transparent; /* Semi-transparent white background */
             backdrop-filter: blur(20px); /* Apply blur effect */
             transition: background-color 0.3s; /* Smooth transition effect */
-            font-size: 12px;
         }
 
         .dropdown-content a img {
             display: block;
-            width: 25px; /* Set the width of the icons */
-            height: 25px; /* Set the height of the icons */
-            margin-bottom: 5px; /* Add margin between icon and text */
+            width: 40px; /* Set the width of the icons */
+            height: 40px; /* Set the height of the icons */
+            margin-bottom: 10px; /* Add margin between icon and text */
         }
 
         .dropdown-content a:hover {
@@ -243,19 +242,6 @@
 
             setTimeout(type, 500);
         }
-
-        function showMenu() {
-            var dropdownContent = document.getElementById("dropdown-content");
-            if (dropdownContent.style.display === "grid") {
-                dropdownContent.style.display = "none";
-            } else {
-                dropdownContent.style.display = "grid";
-            }
-        }
-
-        function hideMenu() {
-            document.getElementById("dropdown-content").style.display = "none";
-        }
     </script>
 </head>
 <body>
@@ -264,12 +250,11 @@
             <source src="fores.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
-    </div>
     <div id="header">
         <div class="menu-dropdown">
             <span id="menu-btn" onmouseover="showMenu()">Menu</span>
             <div class="dropdown-content" id="dropdown-content" onmouseleave="hideMenu()">
-                <a href="index.html">
+                <a href="#">
                     <img src="icons/home-7-48.ico" alt="Home Icon">
                     Home
                 </a>
@@ -287,6 +272,7 @@
                 </a>
             </div>
         </div>
+    </div>
     </div>
     <div id="content">
         <div class="column left-column">
@@ -320,5 +306,16 @@
     </div>
 
     <div id="console"></div>
+
+<script>
+    function showMenu() {
+        document.getElementById("dropdown-content").style.display = "grid";
+    }
+
+    function hideMenu() {
+        document.getElementById("dropdown-content").style.display = "none";
+    }
+</script>
+
 </body>
 </html>

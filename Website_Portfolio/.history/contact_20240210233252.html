@@ -36,7 +36,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
-            color: #383636; /* White text color */
+            color: #333; /* Dark text color */
             display: flex;
             justify-content: space-around;
             align-items: stretch; /* Align items to stretch to the same height */
@@ -76,7 +76,7 @@
 
         .card p {
             margin: 10px 0;
-            color: #979797; /* White text color */
+            color: #fff; /* White text color */
         }
 
         .input-group {
@@ -123,7 +123,7 @@
             justify-content: flex-end; /* Align elements to the right */
             position: fixed;
             width: 100%;
-            z-index: 100; /* Adjusted z-index */
+            z-index: 1;
         }
 
         .menu-dropdown {
@@ -136,38 +136,37 @@
             display: none;
             position: absolute;
             background-color: rgba(0, 0, 0, 0.25); /* Semi-transparent white background */
-            min-width: 150px;
+            min-width: 200px;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.25);
-            z-index: 1000; /* Adjusted z-index */
+            z-index: 1;
             top: 30px; /* Adjust vertical position */
             right: 0; /* Align to the right */
             border-radius: 10px; /* Rounded corners */
-            padding: 7px; /* Padding for spacing */
+            padding: 10px; /* Padding for spacing */
             display: grid; /* Set to grid layout */
             grid-template-columns: repeat(2, 1fr); /* Two columns */
             grid-gap: 10px; /* Gap between grid items */
         }
-
+ 
         .dropdown-content a {
             color: rgb(255, 255, 255);
             text-decoration: none;
             display: flex;
             flex-direction: column; /* Arrange content vertically */
             align-items: center; /* Center content horizontally */
-            padding: 10px 5px;
+            padding: 10px;
             border: none; /* Remove border */
             border-radius: 5px; /* Rounded corners for cards */
             background-color: transparent; /* Semi-transparent white background */
             backdrop-filter: blur(20px); /* Apply blur effect */
             transition: background-color 0.3s; /* Smooth transition effect */
-            font-size: 12px;
         }
 
         .dropdown-content a img {
             display: block;
-            width: 25px; /* Set the width of the icons */
-            height: 25px; /* Set the height of the icons */
-            margin-bottom: 5px; /* Add margin between icon and text */
+            width: 40px; /* Set the width of the icons */
+            height: 40px; /* Set the height of the icons */
+            margin-bottom: 10px; /* Add margin between icon and text */
         }
 
         .dropdown-content a:hover {
@@ -190,73 +189,50 @@
             margin-right: 20px; /* Adjust right margin */
             cursor: pointer;
         }
+</style>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var words = ['Welcome', 'Please make yourself at home'];
+        consoleText(words, 'console');
+    });
 
-        /* Adjusted styles for animated text */
-        #console {
-            position: fixed;
-            top: 175px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #fff;
-            font-size: 24px;
-            z-index: 100; /* Adjusted z-index */
-        }
-    </style>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var words = ['Hello!', 'Feel free to reach out!'];
-            consoleText(words, 'console');
-        });
+    function consoleText(words, id) {
+        var con = document.getElementById('console');
+        var wordIndex = 0;
+        var letterIndex = 0;
+        var word = words[wordIndex];
+        var target = document.getElementById(id);
 
-        function consoleText(words, id) {
-            var wordIndex = 0;
-            var letterIndex = 0;
-            var word = words[wordIndex];
-            var target = document.getElementById(id);
-
-            function type() {
-                target.innerHTML = word.substring(0, letterIndex);
-                letterIndex++;
-                if (letterIndex <= word.length) {
-                    setTimeout(type, 120);
-                } else {
-                    if (wordIndex === 0) {
-                        setTimeout(backspace, 1000);
-                    }
-                }
-            }
-
-            function backspace() {
-                letterIndex--;
-                target.innerHTML = word.substring(0, letterIndex);
-                if (letterIndex > 0) {
-                    setTimeout(backspace, 80);
-                } else {
-                    wordIndex++;
-                    if (wordIndex < words.length) {
-                        word = words[wordIndex];
-                        letterIndex = 0;
-                        setTimeout(type, 500);
-                    }
-                }
-            }
-
-            setTimeout(type, 500);
-        }
-
-        function showMenu() {
-            var dropdownContent = document.getElementById("dropdown-content");
-            if (dropdownContent.style.display === "grid") {
-                dropdownContent.style.display = "none";
+        function type() {
+            target.innerHTML = word.substring(0, letterIndex);
+            letterIndex++;
+            if (letterIndex <= word.length) {
+                setTimeout(type, 120);
             } else {
-                dropdownContent.style.display = "grid";
+                if (wordIndex === 0) {
+                    setTimeout(backspace, 1000);
+                }
             }
         }
 
-        function hideMenu() {
-            document.getElementById("dropdown-content").style.display = "none";
+        function backspace() {
+            letterIndex--;
+            target.innerHTML = word.substring(0, letterIndex);
+            if (letterIndex > 0) {
+                setTimeout(backspace, 80);
+            } else {
+                wordIndex++;
+                if (wordIndex < words.length) {
+                    word = words[wordIndex];
+                    letterIndex = 0;
+                    setTimeout(type, 500);
+                }
+            }
         }
-    </script>
+
+        setTimeout(type, 500);
+    }
+</script>
 </head>
 <body>
     <div id="video-container">
@@ -264,12 +240,11 @@
             <source src="fores.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
-    </div>
     <div id="header">
         <div class="menu-dropdown">
             <span id="menu-btn" onmouseover="showMenu()">Menu</span>
             <div class="dropdown-content" id="dropdown-content" onmouseleave="hideMenu()">
-                <a href="index.html">
+                <a href="#">
                     <img src="icons/home-7-48.ico" alt="Home Icon">
                     Home
                 </a>
@@ -288,6 +263,7 @@
             </div>
         </div>
     </div>
+    </div>
     <div id="content">
         <div class="column left-column">
             <h2 style="margin-bottom: 20px;">My Contacts   ______________________________</h2>
@@ -298,27 +274,37 @@
                 <b>Phone:</b>
                 +1 (234) 567-890</p>
             <p><b>Email:</b>  your.email@example.com</p>
-        </div>
-        <div class="column right-column">
-            <h2 style="margin-bottom: 20px;">Send a Message   ______________________________</h2>
-            <form id="contact-form">
-                <div class="input-group">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="input-group">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="input-group">
-                    <label for="message">Message:</label>
-                    <textarea id="message" name="message" rows="4" required></textarea>
-                </div>
-                <button type="submit" class="submit-btn">Send Message</button>
-            </form>
-        </div>
+        
     </div>
+    <div class="column right-column">
+        <h2 style="margin-bottom: 20px;">Send a Message   ______________________________</h2>
+        <form id="contact-form">
+            <div class="input-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="input-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="input-group">
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+    </div>
+</div>
 
-    <div id="console"></div>
+<script>
+    function showMenu() {
+        document.getElementById("dropdown-content").style.display = "grid";
+    }
+
+    function hideMenu() {
+        document.getElementById("dropdown-content").style.display = "none";
+    }
+</script>
+
 </body>
 </html>
