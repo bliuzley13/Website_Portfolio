@@ -301,7 +301,7 @@
         </div>
         <div class="column right-column">
             <h2 style="margin-bottom: 20px;">Send a Message   ______________________________</h2>
-            <form id="contact-form">
+            <form id="contact-form" action="https://script.google.com/macros/s/AKfycbyFp1U_Q3Di2epyo6wOaahVX2nQdTjemMN1ZxM1fk1Wki4YjgTQpCYcBYkE3dlVdi7Z/exec" method="POST">
                 <div class="input-group">
                     <label for="name">Name:</label>
                     <input type="text" id="name" name="name" required>
@@ -345,8 +345,8 @@
             var message = document.getElementById('message').value;
 
             var emailContent = [
-                'To: arvindkumar.muthukumar@gmail.com',
-                'Subject: Message from Personal Website',
+                'To: your_email@example.com',
+                'Subject: New Message from Contact Form',
                 '',
                 'Name: ' + name,
                 'Email: ' + email,

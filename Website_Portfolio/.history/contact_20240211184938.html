@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Website</title>
+    <title>Let's Get in Touch!</title>
     <style>
         body {
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
             overflow: hidden;
-            background-image: url('abstract-background.jpg'); /* Background image */
+            background-image: url('fores.mp4'); /* Background image */
             background-size: cover;
             background-repeat: no-repeat;
             opacity: 0.9; /* Adjust opacity for transparency */
@@ -32,11 +32,86 @@
 
         #content {
             position: absolute;
-            top: 30%;
+            top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
-            color: #ecf0f1; /* Light text color */
+            color: #383636; /* White text color */
+            display: flex;
+            justify-content: space-around;
+            align-items: stretch; /* Align items to stretch to the same height */
+            padding: 0 10%; /* Side spacing scaled based on the size of the website */
+            z-index: 1;
+        }
+
+        .column {
+            width: 70%; /* Set both columns to 50% width */
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Shadow effect */
+            overflow: hidden; /* Prevents content from overflowing */
+        }
+
+        .left-column {
+            text-align: left;
+            margin: 30px;
+        }
+
+        .right-column {
+            text-align: left;
+            margin: 30px;
+        }
+
+        .card {
+            background-color: rgba(0, 0, 0, 0.25);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px; /* Spacing between cards */
+            width: 80%; /* Card width */
+            max-width: 300px; /* Maximum card width */
+            text-align: center;
+            transition: transform 0.3s; /* Smooth scaling transition */
+        }
+
+        .card p {
+            margin: 10px 0;
+            color: #979797; /* White text color */
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            color: #333; /* Dark text color */
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .input-group input,
+        .input-group textarea {
+            width: calc(100% - 20px); /* Adjust input width */
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc; /* Light border color */
+            background-color: rgba(255, 255, 255, 0.9); /* Light background color */
+            color: #333; /* Dark text color */
+            box-sizing: border-box; /* Include padding in width */
+        }
+
+        .submit-btn {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #2980b9;
         }
 
         #header {
@@ -48,7 +123,7 @@
             justify-content: flex-end; /* Align elements to the right */
             position: fixed;
             width: 100%;
-            z-index: 1;
+            z-index: 100; /* Adjusted z-index */
         }
 
         .menu-dropdown {
@@ -98,36 +173,42 @@
         .dropdown-content a:hover {
             background-color: rgba(255, 255, 255, 0.448); /* Semi-transparent white background on hover */
         }
-        
 
-        #console {
-            font-size: 24px;
-            color: #fff; /* Initial color */
-            white-space: nowrap;
-            overflow: hidden;
-            border-right: 2px solid; /* Cursor effect */
-            animation: typeWriter 8s steps(30) infinite;
+        @media screen and (max-width: 768px) {
+            #content {
+                flex-direction: column;
+                padding: 0 5%; /* Reduce side spacing for smaller screens */
+            }
+
+            .column {
+                width: 100%;
+                margin-bottom: 20px;
+            }
         }
 
-        @keyframes typeWriter {
-            0%, 75% { border-color: #fff; }
-            75%, 100% { border-color: transparent; }
-        }
-
-        /* Positioning for the menu button */
         #menu-btn {
             margin-right: 20px; /* Adjust right margin */
             cursor: pointer;
         }
+
+        /* Adjusted styles for animated text */
+        #console {
+            position: fixed;
+            top: 175px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #fff;
+            font-size: 24px;
+            z-index: 100; /* Adjusted z-index */
+        }
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            var words = ['Welcome', 'Please make yourself at home'];
+            var words = ['Hello!', 'Feel free to reach out!'];
             consoleText(words, 'console');
         });
 
         function consoleText(words, id) {
-            var con = document.getElementById('console');
             var wordIndex = 0;
             var letterIndex = 0;
             var word = words[wordIndex];
@@ -162,22 +243,33 @@
 
             setTimeout(type, 500);
         }
+
+        function showMenu() {
+            var dropdownContent = document.getElementById("dropdown-content");
+            if (dropdownContent.style.display === "grid") {
+                dropdownContent.style.display = "none";
+            } else {
+                dropdownContent.style.display = "grid";
+            }
+        }
+
+        function hideMenu() {
+            document.getElementById("dropdown-content").style.display = "none";
+        }
     </script>
 </head>
 <body>
-
     <div id="video-container">
         <video autoplay loop muted>
             <source src="fores.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     </div>
-
     <div id="header">
         <div class="menu-dropdown">
             <span id="menu-btn" onmouseover="showMenu()">Menu</span>
             <div class="dropdown-content" id="dropdown-content" onmouseleave="hideMenu()">
-                <a href="#">
+                <a href="index.html">
                     <img src="icons/home-7-48.ico" alt="Home Icon">
                     Home
                 </a>
@@ -196,22 +288,53 @@
             </div>
         </div>
     </div>
-
     <div id="content">
-        <div id="console"></div>
-        <!-- Add additional content here -->
+        <div class="column left-column">
+            <h2 style="margin-bottom: 20px;">My Contacts   ______________________________</h2>
+            <p>
+                <b>Address:</b> 
+                Your Address</p>
+            <p>
+                <b>Phone:</b>
+                +1 (234) 567-890</p>
+            <p><b>Email:</b>  your.email@example.com</p>
+        </div>
+        <div class="column right-column">
+            <h2 style="margin-bottom: 20px;">Send a Message   ______________________________</h2>
+            <form id="contact-form" action="https://script.google.com/macros/s/AKfycbyFp1U_Q3Di2epyo6wOaahVX2nQdTjemMN1ZxM1fk1Wki4YjgTQpCYcBYkE3dlVdi7Z/exec" method="POST">
+                <div class="input-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="input-group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
     </div>
 
+    <div id="console"></div>
+
     <script>
-        function showMenu() {
-            document.getElementById("dropdown-content").style.display = "grid";
-        }
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyFp1U_Q3Di2epyo6wOaahVX2nQdTjemMN1ZxM1fk1Wki4YjgTQpCYcBYkE3dlVdi7Z/exec'
+        const form = document.forms['contact-form']
 
-        function hideMenu() {
-            document.getElementById("dropdown-content").style.display = "none";
-        }
-
+        form.addEventListener('submit', as e= {
+            e.preventDefault()
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => alert("Thank you! your form is submitted successfully."))
+            .then(()=>{window.location.reload();})
+            .catch(error=> console.error('Error!', error.message))  
+        })
     </script>
-    
+
+      
+
 </body>
 </html>
